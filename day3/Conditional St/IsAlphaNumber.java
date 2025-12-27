@@ -1,0 +1,26 @@
+class IsAlphaNumber
+{
+	public static void main(String[] args) 
+	{
+		char ch='d';	
+		
+		boolean UC = ch >= 'A' && ch <= 'Z';
+		boolean LC = ch >= 'a' && ch <= 'z';
+		boolean alp = UC || LC;
+		boolean dig = ch >= '0' && ch <= '9';
+		boolean LCV = ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+		boolean UCV = ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U';
+
+		System.out.println(alp ? "Alphabet : "+(UC ? "UpperCase : " + (UCV ? "Vowel" : "Consonant") : "LowerCase " + (LCV ? "Vowel" : "Consonant")) 
+					: (dig ? "Digit" : "Special Character"));
+
+		
+		/*String result2 = ((ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u') ? "Lower Case vowel" :
+						(ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U') ? "Upper Case vowel" :
+						(ch>='a' && ch<='z') ? "lower case consonant" :
+						(ch>='A' && ch<='Z') ? "Upper case consonant" :
+						(ch>='0' && ch<='9') ? "Number" : "Special char");*/
+
+		//System.out.println(result2);
+	}
+}

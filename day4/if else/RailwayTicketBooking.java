@@ -1,0 +1,39 @@
+import java.util.*;
+class RailwayTicketBooking 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		int SLseats = 400;
+		int SLRAC = 100;
+		int Aseats = 300;
+		int ARAC = 70;
+		System.out.print("Enter your choice(Sleeper/3A): ");
+		String choice = sc.next();
+		if(choice.equals("Sleeper")){
+			System.out.print("Enter number of seats: ");
+			int seats = sc.nextInt();
+			if(seats<=SLseats){
+				System.out.println("Booking Confirmed");
+				SLseats-=seats;
+			}else if(seats<=SLRAC+SLseats){
+				System.out.println("Waiting Listed");
+			}else{
+				System.out.println("Booking Cancelled");
+			}
+		}else if(choice.equals("3A")){
+			System.out.println("Enter number of seats: ");
+			int seats = sc.nextInt();
+			if(seats<=Aseats){
+				System.out.println("Booking Confirmed");
+				Aseats-=seats;
+			}else if(seats<=ARAC+Aseats){
+				System.out.println("Waiting Listed");
+			}else{
+				System.out.println("Booking Cancelled");
+			}
+		}else{
+			System.out.println("Enter valid choice");
+		}
+	}
+}

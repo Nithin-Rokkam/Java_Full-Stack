@@ -1,0 +1,13 @@
+class ProdOddAlpha 
+{
+	public static void main(String[] args) 
+	{
+		long res=1;
+		for(int i=65;i<=90;i++){	
+			if(i%2!=0){
+				res*=i;
+				System.out.println("ProdOddAlpha: "+(char) i+"-->"+res);
+			}
+		}
+	}
+}

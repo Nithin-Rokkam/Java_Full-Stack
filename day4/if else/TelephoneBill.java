@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+class TelephoneBill {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of calls: ");
+        int calls = sc.nextInt();
+        int minprice = 200;
+        
+        if (calls > 0 && calls <= 100) {
+            System.out.println("Bill Amount: " + minprice);
+        } else if (calls > 100) {
+            double extraCharge;
+            if (calls <= 150) {
+                extraCharge = (calls - 100) * 0.60;
+            } else if (calls <= 200) {
+                extraCharge = (calls - 100) * 0.50;
+            } else {
+                extraCharge = (calls - 100) * 0.40;
+            }
+            double total = minprice + extraCharge;
+            System.out.println("Bill Amount: " + total);
+        } else {
+            System.out.println("Enter valid Details");
+        }
+        sc.close();
+    }
+}
+

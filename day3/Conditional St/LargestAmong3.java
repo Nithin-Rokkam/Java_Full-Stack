@@ -1,0 +1,11 @@
+class LargestAmong3 
+{
+	public static void main(String[] args) 
+	{
+		int a=10,b=20, c=30;
+		int resfinal=(a>b && a>c)? a : ();
+		//int res1=(a>=b) ? a:b;
+		//int resfinal=(res1>=c) ? res1:c;
+		System.out.println("Largest among 3 = "+resfinal);
+	}
+}

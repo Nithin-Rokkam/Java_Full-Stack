@@ -1,0 +1,19 @@
+class M1 
+{
+	public static void main(String[] args) 
+	{
+		m1(m3(20),m3(100));
+		m2();
+	}
+	public static void m1(int a,int b){
+		System.out.println("Hello World! "+a);
+		System.out.println("Hello World!M3: "+b);
+	}
+	public static int m3(int a){
+		return a;
+	}
+	public static void m2(int a){
+		System.out.println("Hello World! "+a);
+		return;
+	}
+}

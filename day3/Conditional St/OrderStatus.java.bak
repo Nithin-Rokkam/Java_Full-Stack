@@ -1,0 +1,11 @@
+class OrderStatus 
+{
+	public static void main(String[] args) 
+	{
+		boolean Payment = true;
+		boolean Stock = true;
+		boolean backOrder = false;
+		String res = (Payment && (Stock || backOrder)) ? "Order Confirmed": "Order declined";
+		System.out.println("OrderStatus: "+res);
+	}
+}

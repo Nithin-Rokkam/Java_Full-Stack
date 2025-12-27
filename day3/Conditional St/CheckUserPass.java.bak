@@ -1,0 +1,11 @@
+class CheckUserPass 
+{
+	public static void main(String[] args) 
+	{
+		String uname = "";
+		String upass = "dsdsdf";
+		String status = "active";
+		String res = (uname == "" || uname == null && upass == "" || upass == null && status != "active")? "Invalid": "Login successful";
+		System.out.println("Account Status : "+res);
+	}
+}

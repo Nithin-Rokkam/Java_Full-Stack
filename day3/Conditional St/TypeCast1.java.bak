@@ -1,0 +1,11 @@
+import java.util.*;
+class TypeCast1 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter the number: ");
+		int num=sc.nextByte();
+		System.out.println("number is :"+num);
+	}
+}

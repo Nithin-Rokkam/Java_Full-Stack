@@ -1,0 +1,45 @@
+import java.util.*;
+class Method1 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter operation(add/sub/mul): ");
+		String a=sc.nextLine();
+		if(a.equals("add")) add();
+		else if(a.equals("sub")) sub();
+		else if(a.equals("mul"))mul();
+		sc.close();
+	}
+	
+	public static void add(){
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter num1: ");
+		int num1=sc.nextInt();
+		System.out.print("Enter num2: ");
+		int num2=sc.nextInt();
+		int res=(num1+num2);
+		System.out.println("Addition Result: "+res);
+		sc.close();
+	}
+	public static void sub(){
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter num1: ");
+		int num1=sc.nextInt();
+		System.out.print("Enter num2: ");
+		int num2=sc.nextInt();
+		int res=(num1-num2);
+		System.out.println("Substraction Result: "+res);
+		sc.close();
+	}
+	public static void mul(){
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter num1: ");
+		int num1=sc.nextInt();
+		System.out.print("Enter num2: ");
+		int num2=sc.nextInt();
+		int res=(num1*num2);
+		System.out.println("Multiplication Result: "+res);
+		sc.close();
+	}
+}
