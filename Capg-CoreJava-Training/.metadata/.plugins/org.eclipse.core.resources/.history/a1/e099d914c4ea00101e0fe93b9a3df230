@@ -1,0 +1,18 @@
+package encapsulation;
+
+import java.util.Scanner;
+
+public class E1 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int a = 2;
+		System.out.print("Enter: ");
+		int b=sc.nextInt();
+		System.out.println("enter another num: ");
+		int d=sc.nextInt();
+		System.out.print(a);
+		System.out.print(" "+b);
+		System.out.println(" "+d);
+		sc.close();
+	}
+}

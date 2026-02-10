@@ -1,0 +1,196 @@
+SQL> --waqtd Names of all employees:
+SQL> SELECT ename FROM emp;
+
+ENAME                                                                           
+----------                                                                      
+SMITH                                                                           
+ALLEN                                                                           
+WARD                                                                            
+JONES                                                                           
+MARTIN                                                                          
+BLAKE                                                                           
+CLARK                                                                           
+SCOTT                                                                           
+KING                                                                            
+TURNER                                                                          
+ADAMS                                                                           
+
+ENAME                                                                           
+----------                                                                      
+JAMES                                                                           
+FORD                                                                            
+MILLER                                                                          
+
+14 rows selected.
+
+SQL> --waqtd Name and salary of all employees:
+SQL> SELECT ename, sal FROM emp;
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+SMITH             800                                                           
+ALLEN            1600                                                           
+WARD             1250                                                           
+JONES            2975                                                           
+MARTIN           1250                                                           
+BLAKE            2850                                                           
+CLARK            2450                                                           
+SCOTT            3000                                                           
+KING             5000                                                           
+TURNER           1500                                                           
+ADAMS            1100                                                           
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+JAMES             950                                                           
+FORD             3000                                                           
+MILLER           1300                                                           
+
+14 rows selected.
+
+SQL> --waqtd Name and commission of all employees:
+SQL> SELECT ename, comm FROM emp;
+
+ENAME            COMM                                                           
+---------- ----------                                                           
+SMITH                                                                           
+ALLEN             300                                                           
+WARD              500                                                           
+JONES                                                                           
+MARTIN           1400                                                           
+BLAKE                                                                           
+CLARK                                                                           
+SCOTT                                                                           
+KING                                                                            
+TURNER              0                                                           
+ADAMS                                                                           
+
+ENAME            COMM                                                           
+---------- ----------                                                           
+JAMES                                                                           
+FORD                                                                            
+MILLER                                                                          
+
+14 rows selected.
+
+SQL> --waqtd Employee id and department number:
+SQL> SELECT empno, deptno FROM emp;
+
+     EMPNO     DEPTNO                                                           
+---------- ----------                                                           
+      7369         20                                                           
+      7499         30                                                           
+      7521         30                                                           
+      7566         20                                                           
+      7654         30                                                           
+      7698         30                                                           
+      7782         10                                                           
+      7788         20                                                           
+      7839         10                                                           
+      7844         30                                                           
+      7876         20                                                           
+
+     EMPNO     DEPTNO                                                           
+---------- ----------                                                           
+      7900         30                                                           
+      7902         20                                                           
+      7934         10                                                           
+
+14 rows selected.
+
+SQL> --waqtd Name and hiredate of all employees:
+SQL> SELECT ename, hiredate FROM emp;
+
+ENAME      HIREDATE                                                             
+---------- ---------                                                            
+SMITH      17-DEC-80                                                            
+ALLEN      20-FEB-81                                                            
+WARD       22-FEB-81                                                            
+JONES      02-APR-81                                                            
+MARTIN     28-SEP-81                                                            
+BLAKE      01-MAY-81                                                            
+CLARK      09-JUN-81                                                            
+SCOTT      19-APR-87                                                            
+KING       17-NOV-81                                                            
+TURNER     08-SEP-81                                                            
+ADAMS      23-MAY-87                                                            
+
+ENAME      HIREDATE                                                             
+---------- ---------                                                            
+JAMES      03-DEC-81                                                            
+FORD       03-DEC-81                                                            
+MILLER     23-JAN-82                                                            
+
+14 rows selected.
+
+SQL> --waqtd Name and designation (job):
+SQL> SELECT ename, job FROM emp;
+
+ENAME      JOB                                                                  
+---------- ---------                                                            
+SMITH      CLERK                                                                
+ALLEN      SALESMAN                                                             
+WARD       SALESMAN                                                             
+JONES      MANAGER                                                              
+MARTIN     SALESMAN                                                             
+BLAKE      MANAGER                                                              
+CLARK      MANAGER                                                              
+SCOTT      ANALYST                                                              
+KING       PRESIDENT                                                            
+TURNER     SALESMAN                                                             
+ADAMS      CLERK                                                                
+
+ENAME      JOB                                                                  
+---------- ---------                                                            
+JAMES      CLERK                                                                
+FORD       ANALYST                                                              
+MILLER     CLERK                                                                
+
+14 rows selected.
+
+SQL> --waqtd Name, job and salary:
+SQL> SELECT ename, job, sal FROM emp;
+
+ENAME      JOB              SAL                                                 
+---------- --------- ----------                                                 
+SMITH      CLERK            800                                                 
+ALLEN      SALESMAN        1600                                                 
+WARD       SALESMAN        1250                                                 
+JONES      MANAGER         2975                                                 
+MARTIN     SALESMAN        1250                                                 
+BLAKE      MANAGER         2850                                                 
+CLARK      MANAGER         2450                                                 
+SCOTT      ANALYST         3000                                                 
+KING       PRESIDENT       5000                                                 
+TURNER     SALESMAN        1500                                                 
+ADAMS      CLERK           1100                                                 
+
+ENAME      JOB              SAL                                                 
+---------- --------- ----------                                                 
+JAMES      CLERK            950                                                 
+FORD       ANALYST         3000                                                 
+MILLER     CLERK           1300                                                 
+
+14 rows selected.
+
+SQL> --waqtd Department names in DEPT table
+SQL> SELECT dname FROM dept;
+
+DNAME                                                                           
+--------------                                                                  
+ACCOUNTING                                                                      
+RESEARCH                                                                        
+SALES                                                                           
+OPERATIONS                                                                      
+
+SQL> --waqtd Department name and location:
+SQL> SELECT dname, loc FROM dept;
+
+DNAME          LOC                                                              
+-------------- -------------                                                    
+ACCOUNTING     NEW YORK                                                         
+RESEARCH       DALLAS                                                           
+SALES          CHICAGO                                                          
+OPERATIONS     BOSTON                                                           
+
+SQL> spool off

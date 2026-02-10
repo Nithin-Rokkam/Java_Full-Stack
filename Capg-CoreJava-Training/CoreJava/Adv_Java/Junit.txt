@@ -1,0 +1,30 @@
+Testing: To test all the Products/Applcations.
+Testing Types:
+1.Black Box(consists of test-cases) Application Testing
+    -Done by testers
+    -Testers test the test-cases
+    -Applicable for all types of applications Frontend
+2.White Box Code Testing
+    -Done by developers
+    -Developers test the code
+    -Applicable for back-end testing
+
+Backend Testing: 
+    -Unit Testing--> Code Testing
+    Types of Unit Testing(Code testing):
+    1. Framework Testing 
+    (Framework:- Pre-Built code which can be used to develop and it is pre-tested so saves time fro developers)
+    (Example: Junit, Mockito testing)
+    (Advantages: Saves time, Saves money, Saves effort)
+    2. Normal Testing
+    (Example: Manual Testing)
+    (Advantages: No need to write code, No need to test code)
+    (Disadvantages: Time consuming, Costly, Effort consuming)
+
+    FrameWorks:- Pre-Built code which can be used to develop and it is pre-tested so saves time fro developers
+    There are many frameworks available in java-
+    example: 
+    1.Collections 
+    2.Junit
+    3.Hibernate
+    4.Spring

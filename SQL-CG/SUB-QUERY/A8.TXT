@@ -1,0 +1,393 @@
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE SAL > (SELECT SAL FROM EMP WHERE ENAME = 'ADAMS');
+
+ENAME                                                                           
+----------                                                                      
+ALLEN                                                                           
+WARD                                                                            
+JONES                                                                           
+MARTIN                                                                          
+BLAKE                                                                           
+CLARK                                                                           
+SCOTT                                                                           
+KING                                                                            
+TURNER                                                                          
+FORD                                                                            
+MILLER                                                                          
+
+11 rows selected.
+
+SQL> --Q2:
+SQL> SELECT ENAME,SAL
+  2  WHERE SAL<(SELECT SAL FROM EMP WHERE ENAME='KING');
+WHERE SAL<(SELECT SAL FROM EMP WHERE ENAME='KING')
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT ENAME,SAL
+  2  FROM EMP
+  3  WHERE SAL<(SELECT SAL FROM EMP WHERE ENAME='KING');
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+SMITH             800                                                           
+ALLEN            1600                                                           
+WARD             1250                                                           
+JONES            2975                                                           
+MARTIN           1250                                                           
+BLAKE            2850                                                           
+CLARK            2450                                                           
+SCOTT            3000                                                           
+TURNER           1500                                                           
+ADAMS            1100                                                           
+JAMES             950                                                           
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+FORD             3000                                                           
+MILLER           1300                                                           
+
+13 rows selected.
+
+SQL> --Q3:
+SQL> SELECT ENAME,DEPTNO
+  2  FROM EMP
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM EMO WHERE ENAME='JONES');
+WHERE DEPTNO=(SELECT DEPTNO FROM EMO WHERE ENAME='JONES')
+                                 *
+ERROR at line 3:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT ENAME,DEPTNO
+  2  FROM EMP
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='JONES');
+
+ENAME          DEPTNO                                                           
+---------- ----------                                                           
+SMITH              20                                                           
+JONES              20                                                           
+SCOTT              20                                                           
+ADAMS              20                                                           
+FORD               20                                                           
+
+SQL> --Q4:
+SQL> SELECT ENAME,JOB
+  2  FROM EMP
+  3  WHERE JOB=(SELECT JOB FROM EMP WHERE ENAME='JAMES');
+
+ENAME      JOB                                                                  
+---------- ---------                                                            
+SMITH      CLERK                                                                
+ADAMS      CLERK                                                                
+JAMES      CLERK                                                                
+MILLER     CLERK                                                                
+
+SQL> --Q5:
+SQL> SELECT EMPNO,ENAME,SAL*12 AS ANN_SAL
+  2  FROM EMP
+  3  WHERE SAL*12>(SELECT SAL*12 FROM EMP WHERE ENAME='WARD');
+
+     EMPNO ENAME         ANN_SAL                                                
+---------- ---------- ----------                                                
+      7499 ALLEN           19200                                                
+      7566 JONES           35700                                                
+      7698 BLAKE           34200                                                
+      7782 CLARK           29400                                                
+      7788 SCOTT           36000                                                
+      7839 KING            60000                                                
+      7844 TURNER          18000                                                
+      7902 FORD            36000                                                
+      7934 MILLER          15600                                                
+
+9 rows selected.
+
+SQL> Q6:
+SP2-0042: unknown command "Q6:" - rest of line ignored.
+SQL> --Q6:
+SQL> SELECT ENAME,HIREDATE
+  2  FROM EMP
+  3  WHERE HIREDATE<(SELECT HIREDATE FROM EMP WHERE ENAME='SCOTT');
+
+ENAME      HIREDATE                                                             
+---------- ---------                                                            
+SMITH      17-DEC-80                                                            
+ALLEN      20-FEB-81                                                            
+WARD       22-FEB-81                                                            
+JONES      02-APR-81                                                            
+MARTIN     28-SEP-81                                                            
+BLAKE      01-MAY-81                                                            
+CLARK      09-JUN-81                                                            
+KING       17-NOV-81                                                            
+TURNER     08-SEP-81                                                            
+JAMES      03-DEC-81                                                            
+FORD       03-DEC-81                                                            
+
+ENAME      HIREDATE                                                             
+---------- ---------                                                            
+MILLER     23-JAN-82                                                            
+
+12 rows selected.
+
+SQL> --Q7:
+SQL> SELECT ENAME,HIREDATE
+  2  FROM EMP
+  3  WHERE HIREDATE>(SELECT HIREDATE FROM EMP WHERE JOB='PRESIDENT');
+
+ENAME      HIREDATE                                                             
+---------- ---------                                                            
+SCOTT      19-APR-87                                                            
+ADAMS      23-MAY-87                                                            
+JAMES      03-DEC-81                                                            
+FORD       03-DEC-81                                                            
+MILLER     23-JAN-82                                                            
+
+SQL> --Q8:
+SQL> SELECT ENAME, SAL
+  2  FROM EMP
+  3  WHERE SAL<(SELECT SAL FROM EMP WHERE EMPNO=7839);
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+SMITH             800                                                           
+ALLEN            1600                                                           
+WARD             1250                                                           
+JONES            2975                                                           
+MARTIN           1250                                                           
+BLAKE            2850                                                           
+CLARK            2450                                                           
+SCOTT            3000                                                           
+TURNER           1500                                                           
+ADAMS            1100                                                           
+JAMES             950                                                           
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+FORD             3000                                                           
+MILLER           1300                                                           
+
+13 rows selected.
+
+SQL> --Q9:
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE HIREDATE<(SELECT HIREDATE FROM EMP WHERE ENAME='MILLER');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20                                                                      
+                                                                                
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300      
+        30                                                                      
+                                                                                
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500      
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7566 JONES      MANAGER         7839 02-APR-81       2975                 
+        20                                                                      
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400      
+        30                                                                      
+                                                                                
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                 
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                 
+        10                                                                      
+                                                                                
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10                                                                      
+                                                                                
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0      
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7900 JAMES      CLERK           7698 03-DEC-81        950                 
+        30                                                                      
+                                                                                
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+
+11 rows selected.
+
+SQL> SELECT ENAME,EMPNO
+  2  FROM EMP
+  3  WHERE HIREDATE<(SELECT HIREDATE FROM EMP WHERE ENAME='ALLEN');
+
+ENAME           EMPNO                                                           
+---------- ----------                                                           
+SMITH            7369                                                           
+
+SQL> --Q11
+SQL> SELECT ENAME,SAL
+  2  FROM EMP
+  3  WHERE SAL>(SELECT SAL FROM EMP WHERE ENAME='MILLER') AND SAL<(SELECT SAL FROM EMP WHERE ENAME='ALLEN');
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+TURNER           1500                                                           
+
+SQL> --Q12
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE DEPTNO=20
+  4  AND JOB=(SELECT JOB FROM EMP WHERE ENAME='SMITH');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20                                                                      
+                                                                                
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                 
+        20                                                                      
+                                                                                
+
+SQL> --Q13
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE JOB='MANAGER'
+  4  AND DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='TURNER');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                 
+        30                                                                      
+                                                                                
+
+SQL> --Q14:
+SQL> SELECT ENAME,HIREDATE
+  2  FROM EMP
+  3  WHERE HIREDATE>DATE '1980-12-31'
+  4  AND HIREDATE<(SELECT HIREDATE FROM EMP WHERE ENAME='KING');
+
+ENAME      HIREDATE                                                             
+---------- ---------                                                            
+ALLEN      20-FEB-81                                                            
+WARD       22-FEB-81                                                            
+JONES      02-APR-81                                                            
+MARTIN     28-SEP-81                                                            
+BLAKE      01-MAY-81                                                            
+CLARK      09-JUN-81                                                            
+TURNER     08-SEP-81                                                            
+
+7 rows selected.
+
+SQL> --Q15:
+SQL> SELECT ENAME,SAL,SAL*12 AS ANN_SAL
+  2  FROM EMP
+  3  WHERE SAL<(SELECT SAL FROM EMP WHERE ENAME='BLAKE') AND SAL>1500;
+
+ENAME             SAL    ANN_SAL                                                
+---------- ---------- ----------                                                
+ALLEN            1600      19200                                                
+CLARK            2450      29400                                                
+
+SQL> --Q16:
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE SAL>(SELECT SAL FROM WMP WHERE ENAME='SCOTT') AND SAL<(SELECT SAL FROM EMP WHERE ENAME='KING');
+WHERE SAL>(SELECT SAL FROM WMP WHERE ENAME='SCOTT') AND SAL<(SELECT SAL FROM EMP WHERE ENAME='KING')
+                           *
+ERROR at line 3:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE SAL>(SELECT SAL FROM EMP WHERE ENAME='SCOTT') AND SAL<(SELECT SAL FROM EMP WHERE ENAME='KING');
+
+no rows selected
+
+SQL> --Q17
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE ENAME LIKE 'A%'
+  4  AND DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='BLAKE');
+
+ENAME                                                                           
+----------                                                                      
+ALLEN                                                                           
+
+SQL> --Q18:
+SQL> SELECT ENAME,COMM
+  2  FROM EMP
+  3  WHERE COMM IS NOT NULL
+  4  AND JOB=(SELECT JOB FROM WHERE ENAME='SMITH');
+AND JOB=(SELECT JOB FROM WHERE ENAME='SMITH')
+                         *
+ERROR at line 4:
+ORA-00903: invalid table name 
+
+
+SQL> SELECT ENAME,COMM
+  2  FROM EMP
+  3  WHERE COMM IS NOT NULL
+  4  AND JOB=(SELECT JOB FROM EMP WHERE ENAME='SMITH');
+
+no rows selected
+
+SQL> --Q19:
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE JOB='CLERK'
+  4  AND DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='TURNER');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7900 JAMES      CLERK           7698 03-DEC-81        950                 
+        30                                                                      
+                                                                                
+
+SQL> --Q20:
+SQL> SELECT ENAME,SAL,JOB
+  2  FROM EMP
+  3  WHERE SAL*12>(SELECT SAL*12 FROM EMP WHERE ENAME='SMITH') AND SAL*12<(SELECT SAL*12 FROM EMP WHERE ENAME='KING');
+
+ENAME             SAL JOB                                                       
+---------- ---------- ---------                                                 
+ALLEN            1600 SALESMAN                                                  
+WARD             1250 SALESMAN                                                  
+JONES            2975 MANAGER                                                   
+MARTIN           1250 SALESMAN                                                  
+BLAKE            2850 MANAGER                                                   
+CLARK            2450 MANAGER                                                   
+SCOTT            3000 ANALYST                                                   
+TURNER           1500 SALESMAN                                                  
+ADAMS            1100 CLERK                                                     
+JAMES             950 CLERK                                                     
+FORD             3000 ANALYST                                                   
+
+ENAME             SAL JOB                                                       
+---------- ---------- ---------                                                 
+MILLER           1300 CLERK                                                     
+
+12 rows selected.
+
+SQL> SPOOL OFF

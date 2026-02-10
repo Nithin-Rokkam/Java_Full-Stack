@@ -1,0 +1,174 @@
+SQL> --Q1:
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='SMITH');
+
+DNAME                                                                           
+--------------                                                                  
+RESEARCH                                                                        
+
+SQL> --Q2:
+SQL> SELECT DNAME,LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='KING');
+
+DNAME          LOC                                                              
+-------------- -------------                                                    
+ACCOUNTING     NEW YORK                                                         
+
+SQL> --Q3:
+SQL> SELECT LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE EMPNO=7902);
+
+LOC                                                                             
+-------------                                                                   
+DALLAS                                                                          
+
+SQL> --Q4:
+SQL> SELECT DNAME,LOC,DEPTNO
+  2  FROM DEPT
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAMEN LIKE '%R');
+WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAMEN LIKE '%R')
+                                           *
+ERROR at line 3:
+ORA-00904: "ENAMEN": invalid identifier 
+
+
+SQL> SELECT DNAME,LOC,DEPTNO
+  2  FROM DEPT
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME LIKE '%R');
+WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME LIKE '%R')
+              *
+ERROR at line 3:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> SELECT DNAME,LOC,DEPTNO
+  2  FROM DEPT
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME LIKE '%R');
+WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME LIKE '%R')
+              *
+ERROR at line 3:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> SELECT DNAME,LOC,DEPTNO
+  2  FROM DEPT
+  3  WHERE DEPTNO = (
+  4  SELECT DEPTNO
+  5  FROM EMP
+  6  WHERE ENAME LIKE '%R');
+SELECT DEPTNO
+*
+ERROR at line 4:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> SELECT DNAME,LOC,DEPTNO
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE ENAME LIKE '%R');
+
+DNAME          LOC               DEPTNO                                         
+-------------- ------------- ----------                                         
+ACCOUNTING     NEW YORK              10                                         
+SALES          CHICAGO               30                                         
+
+SQL> --Q5:
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO = (SELECT DEPTNO FROM EMP WHERE JOB='PRESIDENT');
+
+DNAME                                                                           
+--------------                                                                  
+ACCOUNTING                                                                      
+
+SQL> --Q6:
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM DEPT WHERE DNAME='ACCOUNTING');
+
+ENAME                                                                           
+----------                                                                      
+CLARK                                                                           
+KING                                                                            
+MILLER                                                                          
+
+SQL> --Q7:
+SQL> SELECT ENAME,SAL
+  2  FROM EMP
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM DEPT WHERE LOC='CHICAGO');
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+ALLEN            1600                                                           
+WARD             1250                                                           
+MARTIN           1250                                                           
+BLAKE            2850                                                           
+TURNER           1500                                                           
+JAMES             950                                                           
+
+6 rows selected.
+
+SQL> --Q8:
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM DEPT WHERE DNAME='SALES');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300      
+        30                                                                      
+                                                                                
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500      
+        30                                                                      
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400      
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                 
+        30                                                                      
+                                                                                
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0      
+        30                                                                      
+                                                                                
+      7900 JAMES      CLERK           7698 03-DEC-81        950                 
+        30                                                                      
+                                                                                
+
+6 rows selected.
+
+SQL> --Q9:
+SQL> SELECT E.*,(E.SAL * 12) AS ANN_SAL
+  2  FROM EMP E
+  3  WHERE E.DEPTNO=(SELECT DEPTNO FROM DEPT WHERE LOC = 'NEW YORK');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO    ANN_SAL                                                           
+---------- ----------                                                           
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                 
+        10      29400                                                           
+                                                                                
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10      60000                                                           
+                                                                                
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                 
+        10      15600                                                           
+                                                                                
+
+SQL> --Q10:
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE DEPTNO=(SELECT DEPTNO FROM DEPT WHERE DNAME = 'OPERATIONS');
+
+no rows selected
+
+SQL> SPOOL OFF
