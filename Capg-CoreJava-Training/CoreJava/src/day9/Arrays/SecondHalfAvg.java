@@ -1,0 +1,20 @@
+import java.util.Scanner;
+import java.util.Arrays;
+class SecondHalfAvg
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the size: ");
+		int arr[] = new int[sc.nextInt()];
+		System.out.print("Enter the element: ");
+		for(int i=0;i<arr.length;i++){
+			arr[i]=sc.nextInt();
+		}
+		int res=0;
+		for(int i=arr.length-1;i>arr.length/2;i--){
+			res+=arr[i];
+		}
+		System.out.println("Second half avg: "+res/(arr.length/2));
+	}
+}

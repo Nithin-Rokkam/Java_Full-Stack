@@ -1,0 +1,10 @@
+class AmountWithdrawl 
+{
+	public static void main(String[] args) 
+	{
+		int bal=10000;
+		int WithdrawAmount=-50000;
+		String res=(WithdrawAmount>=0 && WithdrawAmount<=bal)?"Success":"Fail";
+		System.out.println("Status: "+res);
+	}
+}

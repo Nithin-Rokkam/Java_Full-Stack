@@ -1,0 +1,14 @@
+class IsAlphaNumber
+{
+	public static void main(String[] args) 
+	{
+		char ch='b';
+		String result=((ch>='A' && ch<='Z') || (ch>='a' && ch<='z')) ? ((ch>='A' && ch<='Z') ? 
+			((ch=='A' || ch=='E' || ch=='I' || ch=='O' || ch=='U') ? "UpperCase-Vowel" : "UpperCase-Consonant") : 
+			(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u') ? "LowerCase-Vowel" : "LowerCase-Consonant") :
+			(ch>='0' && ch<='9') ? "Digit" : "Special Character";
+		
+		String res1 = (ch>='a' && ch<='z') ? ((ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u') ? "Lower Case vowel" : "lower case consonant") : (ch>='A' && ch<='Z') ? ((ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U') ? "Upper Case vowel" : "Upper case consonant") : (ch>='0' && ch<='9') ? "Number" : "Special char";
+		System.out.println(result);
+	}
+}

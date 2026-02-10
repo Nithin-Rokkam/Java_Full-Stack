@@ -1,0 +1,69 @@
+import java.util.*;
+class AtmOpSelection2 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		long AccNo=123456789;
+		double bal=0;
+		while(true){
+			System.out.print("ATM Operations\n1.Withdraw\n2.Deposit\n3.Bal-Enquiry\n4.Exit\nSelect the operation to perform: ");
+			int choice = sc.nextInt();
+			switch(choice){
+				case 1:
+					System.out.println("Enter the amount to Withdraw: ");
+					int WithdrawAmount = sc.nextInt();
+					if(withdraw(WithdrawAmount,bal)){
+						System.out.println("Withdrawl successful\n\n");
+						bal-=WithdrawAmount;
+					}else{
+						System.out.println("Withdrawl Unsuccessful\n\n");
+					}
+					break;
+				case 2:
+					System.out.println("Enter the account number: ");
+					long userAccNo=sc.nextLong();
+					sc.nextLine();
+					bal+=deposit(userAccNo,AccNo,bal);
+					break;
+				case 3:
+					Bal_Enquiry(bal);
+					break;
+				case 4:
+					System.out.println("Thank-you\n\n");
+					return;
+				default:
+					System.out.println("Enter the valid choice");
+			}
+		}
+		
+	}
+	
+	public static boolean withdraw(int WithdrawAmount,double bal){
+		if(WithdrawAmount>0 && WithdrawAmount<bal ){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public static double deposit(long userAccNo, long AccNo, double currentBal) {
+    if(userAccNo == AccNo) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter amount to Deposit: ");
+        double depositAmt = sc.nextDouble();
+        if(depositAmt > 0) {
+            double newBal = currentBal + depositAmt;
+            System.out.println("Deposit successful. New balance: " + newBal + "\n");
+            return newBal;
+        }
+    } else {
+        System.out.println("Invalid account number\n");
+    }
+    return currentBal;
+}
+	
+	public static void Bal_Enquiry(double bal){
+		System.out.println("Balance: " + String.format("%.2f", bal) + "\n\n");
+	}
+}

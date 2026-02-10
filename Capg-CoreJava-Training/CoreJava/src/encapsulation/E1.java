@@ -1,0 +1,24 @@
+package encapsulation;
+
+import java.util.Scanner;
+
+public class E1 {
+	int a;
+	public E1() {
+		System.out.println("No args constructor");
+	}
+
+	public E1(int a) {
+		this();
+		this.a = a;
+		System.out.println(a);
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		E1 e = new E1(100);
+		System.out.println(e.a);
+		System.out.println(e.a);
+		sc.close();
+	}
+}

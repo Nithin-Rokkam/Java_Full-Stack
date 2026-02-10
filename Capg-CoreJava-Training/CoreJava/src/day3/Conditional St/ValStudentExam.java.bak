@@ -1,0 +1,14 @@
+class ValStudentExam
+{
+	public static void main(String[] args) 
+	{
+		String Fee = "paid";
+		int Attendance = 72;
+		String medical = "no";
+		//boolean cert = (medical=="yes")? true:false;
+		boolean ExamStatus = (Attendance>=75 || medical=="yes")? true: false;
+		boolean Fstatus = (Fee=="paid")?true:false;
+		String res = (ExamStatus && Fstatus)? "Allowed":"Not Allowed";
+		System.out.println("Exam : "+res);
+	}
+}

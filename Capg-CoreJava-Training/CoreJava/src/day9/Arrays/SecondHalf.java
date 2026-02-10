@@ -1,0 +1,20 @@
+import java.util.Scanner;
+import java.util.Arrays;
+class SecondHalf
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the size: ");
+		int arr[] = new int[sc.nextInt()];
+		System.out.print("Enter the element: ");
+		for(int i=0;i<arr.length;i++){
+			arr[i]=sc.nextInt();
+		}
+		int res=0;
+		System.out.println("Second half: ");
+		for(int i=arr.length-1;i>arr.length/2;i--){
+			System.out.println(arr[i]);
+		}
+	}
+}

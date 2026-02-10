@@ -1,0 +1,23 @@
+import java.util.*;
+class User_auth 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the User_name: ");
+		String Username=sc.nextLine();
+		System.out.print("Enter the Password: ");
+		String Password=sc.nextLine();
+		String res=transaction(Username,Password);
+		System.out.println("Result: "+res);
+	}
+	
+	public static String transaction(String Username,String Password){
+		
+		if(Username.equals("Nithin") && Password.equals("123456")){
+			return "status:202 -Login Successful";
+		}else{
+			return "status:404 -Unauthorized";
+		}
+	}
+}

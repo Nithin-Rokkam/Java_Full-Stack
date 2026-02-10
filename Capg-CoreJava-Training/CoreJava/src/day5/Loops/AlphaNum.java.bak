@@ -1,0 +1,11 @@
+import java.util.*;
+class AlphaNum 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter the number fro alphabet(1-26): ");
+		int num=sc.nextInt();
+		System.out.println("The alphabet doe the number "+num+" is "+(char)(65-num+1));
+	}
+}

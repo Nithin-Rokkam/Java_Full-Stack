@@ -1,0 +1,21 @@
+import java.util.Scanner;
+import java.util.Arrays;
+class ReadEvenVal 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the size: ");
+		int arr[] = new int[sc.nextInt()];
+		System.out.print("Enter the element: ");
+		for(int i=0;i<arr.length;i+=2){
+			arr[i]=sc.nextInt();
+		}
+		
+		System.out.print("Elements: ");
+		for (int i=0;i<arr.length;i+=2)
+		{		
+			System.out.print(arr[i]);
+		}
+	}
+}

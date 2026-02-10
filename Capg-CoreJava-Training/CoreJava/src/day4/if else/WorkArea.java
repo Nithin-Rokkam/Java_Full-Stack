@@ -1,0 +1,17 @@
+import java.util.*;
+class WorkArea 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter your gender(M/F): ");
+		char gender=sc.next().charAt(0);
+		System.out.print("Enter your age: ");
+		int age = sc.nextInt();
+		if((gender=='F' && age>=20) || (gender==('M') && (age>40 && age<=60))){
+			System.out.println("Work Area: Urban Area");
+		}else if(gender == 'M' && (age>=20 && age <=40)){
+			System.out.println("Work Area: Anywhere of your choice");
+		}else System.out.println("ERROR Age or Gender");
+	}
+}

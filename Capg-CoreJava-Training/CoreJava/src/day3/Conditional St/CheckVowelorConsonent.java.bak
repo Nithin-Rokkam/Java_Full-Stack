@@ -1,0 +1,12 @@
+class CheckVowelorConsonent 
+{
+	public static void main(String[] args) 
+	{
+		char ch='u';
+		String resL=(ch=='a' || ch=='e' || ch=='i' || ch=='o'|| ch=='u')? "LowercaseVowel":"LowerCaseConsonent";
+		System.out.println("Result= "+resL);
+		char ch2='U';
+		String resU=(ch2=='A' || ch2=='E' || ch2=='I' || ch2=='O'|| ch2=='U')? "UppercaseVowel":"UpperCaseConsonent";
+		System.out.println("Result= "+resU);
+	}
+}

@@ -1,0 +1,37 @@
+import java.util.*;
+class DisariumNum 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc= new Scanner(System.in);
+		System.out.print("Enter the number: ");
+		int num=sc.nextInt();
+		if(isDisarium(num)){
+			System.out.print("Disarium number ");
+		}else{
+			System.out.print("not Disarium number ");
+		}
+	}
+	
+	public static boolean isDisarium(int num){
+		int dem1=num;
+		int l=0;
+		while(dem1>0){
+			l++;
+			dem1/=10;
+		}
+		double res=0;
+		int temp=num;
+		while(temp>0){
+			int dem2=temp%10;
+			res+=Math.pow(dem2,l);
+			temp/=10;
+			l--;
+		}
+		if(res==num){
+			return true;
+		}else{
+			return false;
+		}
+	}
+}

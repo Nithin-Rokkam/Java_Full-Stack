@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.Arrays;
+class CheckElement 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the size: ");
+		int arr[] = new int[sc.nextInt()];
+		System.out.print("Enter the element: ");
+		for(int i=0;i<arr.length;i++){
+			arr[i]=sc.nextInt();
+		}
+		System.out.print("Enter the element to be checked: ");
+		int res=check(arr,ele);
+		System.out.print("Second largest element: "+Secmax);
+	}
+	
+	public static boolean check(int arr[],int ele){
+		for(int i=0;i<arr.length;i++){
+			if(arr[i]==ele){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}
+}

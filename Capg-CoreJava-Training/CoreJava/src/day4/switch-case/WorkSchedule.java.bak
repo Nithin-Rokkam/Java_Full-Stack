@@ -1,0 +1,28 @@
+import java.util.*;
+class WorkSchedule
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the Day of the Week: ");
+		int day = sc.nextInt();
+		switch(day){
+			case 1:
+				System.out.print("Weekday-Monday");
+			case 2:
+				System.out.print("Weekday-Tuesday");
+			case 3:
+				System.out.print("Weekday-Wednesday");
+			case 4:
+				System.out.print("Weekday-Thursday");
+			case 5:
+				System.out.print("Weekday-Friday");
+			case 6:
+				System.out.print("Weekend-Saturday");
+			case 7:
+				System.out.print("Weekend-Sunday");
+			default:
+				System.out.print("Enter valid Input");
+		}
+	}
+}

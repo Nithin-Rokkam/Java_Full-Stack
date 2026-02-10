@@ -1,0 +1,17 @@
+class  A3
+{
+	public static void main(String[] args) 
+	{
+		//Runs successfully but not prints anything because size is not initialized
+		int arr[] = new int[]{};
+		for(int i=0;i<arr.length;i++){
+			System.out.println(arr[i]+" ");
+		}
+		
+		//prints normally
+		int arr2[] = new int[]{1,2,3,4};
+		for(int i=0;i<arr2.length;i++){
+			System.out.println(arr2[i]+" ");
+		}
+	}
+}
