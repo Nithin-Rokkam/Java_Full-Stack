@@ -1,0 +1,113 @@
+                Hibernate-Framework 
+Student.java
+------------
+public class Student implements Serializable {
+	
+	private int sno;//id propery
+	private String sname;
+	private String email;
+	private long mobile;
+             get/set
+
+Student.hbm.xml
+---------------
+
+<hibernate-mapping>
+    <class name="com.capg.hibernate.Student" table="STUDENT">
+
+        <id name="sno" column="SNO" type="int">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="sname" column="SNAME" type="string"/>
+        <property name="email" column="EMAIL" type="string" length="100"/>
+        <property name="mobile" column="MOBILE" type="long"/>
+
+    </class>
+</hibernate-mapping>
+
+
+hibernate.cfg.xml
+-----------------
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Oracle DB Configuration -->
+        <property name="hibernate.connection.driver_class">
+            oracle.jdbc.driver.OracleDriver
+        </property>
+        <property name="hibernate.connection.url">
+            jdbc:oracle:thin:@localhost:1521:XE
+        </property>
+        <property name="hibernate.connection.username">capgdb</property>
+        <property name="hibernate.connection.password">capgdb</property>
+
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.Oracle10gDialect
+        </property>
+
+        <!-- Hibernate Settings -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Auto table creation (FOR LEARNING ONLY) -->
+        <property name="hibernate.hbm2ddl.auto">create</property>
+
+        <!-- Mapping file -->
+        <mapping resource="Student.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>
+
+
+InsertStudent.java
+------------------
+
+package com.capg.hibernate;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class InsertStudent {
+
+    public static void main(String[] args) {
+
+        // 1. Start Hibernate framework
+        Configuration cfg = new Configuration();
+        cfg.configure(); // loads hibernate.cfg.xml
+
+        // 2. Build SessionFactory
+        SessionFactory factory = cfg.buildSessionFactory();
+
+        // 3. Open Session
+        Session session = factory.openSession();
+
+        // 4. Begin Transaction
+        Transaction tx = session.beginTransaction();
+
+        try {
+            // 5. Create Student object 1
+            Student s1 = new Student();
+            s1.setSno(9);
+            s1.setSname("Ram");
+            s1.setEmail("ram@gmail.com");
+            s1.setMobile(77777777L);
+
+            session.save(s1);
+            // 7. Commit Transaction
+            tx.commit();
+            System.out.println("Records inserted successfully");
+
+        } catch (Exception e) {
+            tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            factory.close();
+        }
+    }
+}
+
+
+
