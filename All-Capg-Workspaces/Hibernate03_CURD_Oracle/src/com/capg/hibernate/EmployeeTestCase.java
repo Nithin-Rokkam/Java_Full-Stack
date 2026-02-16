@@ -40,7 +40,7 @@ public class EmployeeTestCase {
 
 		  try {
 			session = factory.openSession();
-			                     //"slect * from employee where empid=1"
+			                     //"select * from employee where empid=1"
 			  Employee emp = (Employee) session.load(Employee.class, new Integer(empno));
 
 			  return emp;

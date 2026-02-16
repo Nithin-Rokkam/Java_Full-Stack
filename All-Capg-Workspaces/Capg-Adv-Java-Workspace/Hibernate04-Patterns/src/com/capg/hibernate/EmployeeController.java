@@ -22,7 +22,7 @@ public class EmployeeController {
             int t = employeeService.addEmployee(empId, empName, salary);
 
             System.out.println("EmployeeController return value for db  :" + t);
-
+            sc.close();
         } catch (Exception e) {
             System.out.println(e);
         }
