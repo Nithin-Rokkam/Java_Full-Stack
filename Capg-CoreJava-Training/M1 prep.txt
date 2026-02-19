@@ -1,0 +1,15 @@
+String manipulation
+  -String 90%
+  -Character object almost
+  -String builder reverse 30min
+  -String replace, Substring, replaceAll almost
+  -IndexOf almost
+  
+Exception Handling
+  -Try-catch, finally
+  -Throws, throw
+
+Regular Expression
+Streams
+Collections
+
