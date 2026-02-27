@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <persistence-unit name="crmPU" transaction-type="RESOURCE_LOCAL">
+
+        <!-- Hibernate as JPA Provider -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- ================= ENTITY CLASSES ================= -->
+        <class>com.hibernate.entity.Customer</class>
+        <class>com.hibernate.entity.Address</class>
+        <class>com.hibernate.entity.SalesEmployee</class>
+        <class>com.hibernate.entity.Lead</class>
+        <class>com.hibernate.entity.Product</class>
+        <class>com.hibernate.entity.Order</class>
+        <class>com.hibernate.entity.SupportTicket</class>
+
+        <!-- ================= DATABASE CONFIG ================= -->
+        <properties>
+
+            <property name="javax.persistence.jdbc.driver"
+                      value="oracle.jdbc.driver.OracleDriver"/>
+
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:oracle:thin:@localhost:1521:XE"/>
+
+            <property name="javax.persistence.jdbc.user"
+                      value="capgdb"/>
+
+            <property name="javax.persistence.jdbc.password"
+                      value="capgdb"/>
+
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.OracleDialect"/>
+
+            <property name="hibernate.hbm2ddl.auto"
+                      value="create"/>
+
+            <property name="hibernate.show_sql"
+                      value="true"/>
+
+            <property name="hibernate.format_sql"
+                      value="true"/>
+
+            <property name="hibernate.use_sql_comments"
+                      value="true"/>
+
+        </properties>
+
+    </persistence-unit>
+</persistence>

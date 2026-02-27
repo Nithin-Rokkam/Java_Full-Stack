@@ -12,7 +12,6 @@ public class EmployeeClient {
 		
 		EmployeeService e2 = (EmployeeService) factory.getBean("employeeService2");
 		e2.EmployeeDetails();
-				
 
 	}
 

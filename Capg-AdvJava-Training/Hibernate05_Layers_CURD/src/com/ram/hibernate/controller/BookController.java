@@ -10,7 +10,7 @@ public class BookController {
         BookService service = new BookService();
 
         // CREATE
-//        service.addBook(107, "Java", 250);
+        service.addBook(110, "Java", 2000);
 
         // READ
 //        service.getBook(107);

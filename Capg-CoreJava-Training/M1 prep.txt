@@ -13,3 +13,7 @@ Regular Expression
 Streams
 Collections
 
+starting consonant firtletter last and add ed in place of first letter
+
+god is great
+odged siay reatged
