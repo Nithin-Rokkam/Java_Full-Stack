@@ -26,7 +26,7 @@ public class NewCustomerController implements Controller {
 	
 		String cname = req.getParameter("cname").trim();  // Step 18 cname,email,mobile : got the data form the browser
 		String email = req.getParameter("email").trim();
-		String mobile = req.getParameter("mobile").trim();
+		String mobile = req.getParameter("mobile").trim(); 
 		
 		// Primary key increment
 		cid++;   // Step-19  cid++ : increment for database record count
