@@ -1,0 +1,6 @@
+MicroServices
+	EurekaServer
+	LoanService
+	CustomerService
+	DematAccountService(Trading Account)
+	GateWayService

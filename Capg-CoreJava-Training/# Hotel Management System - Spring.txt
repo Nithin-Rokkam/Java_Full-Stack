@@ -1,0 +1,315 @@
+# Hotel Management System - Spring Boot Application
+
+## Project Overview
+This is a Hotel Management System built with Spring Boot 3.2.3, Spring Data JPA, and MySQL database. The application provides REST APIs to manage hotel rooms and bookings.
+
+## Technologies Used
+- **Spring Boot**: 3.2.3
+- **Java**: 17
+- **Spring Data JPA**: For database operations using EntityManager
+- **MySQL**: Database
+- **Maven**: Build tool
+- **Jakarta Persistence API**: For entity mappings
+
+## Project Structure
+```
+src/main/java/com/capg/springboot/
+├── HotelManagementAssesmentSpringBootApplication.java  # Main application class
+├── controller/
+│   ├── BookingController.java                          # REST endpoints for bookings
+│   └── RoomController.java                             # REST endpoints for rooms
+├── entity/
+│   ├── Booking.java                                    # Booking entity
+│   └── Room.java                                       # Room entity
+├── repository/
+│   ├── BookingRepository.java                          # Booking JPA repository
+│   └── RoomRepository.java                             # Room JPA repository
+└── service/
+    ├── BookingService.java                             # Booking service interface
+    ├── RoomService.java                                # Room service interface
+    └── impl/
+        ├── BookingServiceImpl.java                     # Booking service implementation
+        ├── RoomServiceImpl.java                        # Room service implementation
+        └── ResousrseNotFoundException.java             # Custom exception
+```
+
+## Database Configuration
+Update the following properties in `src/main/resources/application.properties`:
+
+```properties
+spring.application.name=HotelManagement-Assesment-SpringBoot
+server.port=9998
+
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:3306/mycapgdb
+spring.datasource.username=root
+spring.datasource.password=admin123
+```
+
+**Note**: Make sure MySQL is running and the database `mycapgdb` exists.
+
+## How to Run the Application
+
+### Prerequisites
+- Java 17 or higher installed
+- MySQL Server running
+- Maven (or use the included Maven wrapper)
+
+### Steps to Run
+1. **Navigate to project directory**:
+   ```cmd
+   cd C:\Capgemini-Training\All-Capg-Workspaces\Capg-ADV-JAVA-Development\HotelManagement-Assesment-SpringBoot
+   ```
+
+2. **Build the project**:
+   ```cmd
+   mvnw.cmd clean install
+   ```
+
+3. **Run the application**:
+   ```cmd
+   mvnw.cmd spring-boot:run
+   ```
+
+4. The application will start on **http://localhost:9998**
+
+## API Documentation
+
+### Room Management APIs
+
+#### Base URL: `http://localhost:9998/rooms`
+
+#### 1. Create a New Room
+- **Endpoint**: `POST /rooms/add`
+- **Description**: Adds a new room to the hotel
+- **Request Body**:
+  ```json
+  {
+    "roomId": 101,
+    "roomNumber": "R101",
+    "roomType": "Deluxe",
+    "price": 2500.00,
+    "status": "Available"
+  }
+  ```
+- **Response**: Returns the created room object
+- **Example**:
+  ```cmd
+  curl -X POST http://localhost:9998/rooms/add -H "Content-Type: application/json" -d "{\"roomId\":101,\"roomNumber\":\"R101\",\"roomType\":\"Deluxe\",\"price\":2500.00,\"status\":\"Available\"}"
+  ```
+
+#### 2. Get All Rooms
+- **Endpoint**: `GET /rooms/all`
+- **Description**: Retrieves all rooms in the hotel
+- **Response**: List of all room objects
+- **Example**:
+  ```cmd
+  curl -X GET http://localhost:9998/rooms/all
+  ```
+
+#### 3. Get Room by ID
+- **Endpoint**: `GET /rooms/{roomId}`
+- **Description**: Retrieves a specific room by its ID
+- **Path Variable**: `roomId` (integer)
+- **Response**: Room object
+- **Example**:
+  ```cmd
+  curl -X GET http://localhost:9998/rooms/101
+  ```
+
+#### 4. Update Room
+- **Endpoint**: `PUT /rooms/update/{roomId}`
+- **Description**: Updates an existing room
+- **Path Variable**: `roomId` (integer)
+- **Response**: Updated room object
+- **Example**:
+  ```cmd
+  curl -X PUT http://localhost:9998/rooms/update/101
+  ```
+
+#### 5. Delete Room
+- **Endpoint**: `DELETE /rooms/delete/{roomId}`
+- **Description**: Deletes a room from the system
+- **Path Variable**: `roomId` (integer)
+- **Response**: No content (void)
+- **Example**:
+  ```cmd
+  curl -X DELETE http://localhost:9998/rooms/delete/101
+  ```
+
+---
+
+### Booking Management APIs
+
+#### Base URL: `http://localhost:9998/bookings`
+
+#### 1. Create a New Booking
+- **Endpoint**: `POST /bookings/create`
+- **Description**: Creates a new booking for a customer
+- **Request Body**:
+  ```json
+  {
+    "customerName": "John Doe",
+    "customerPhone": "9876543210",
+    "checkInDate": "2026-03-10",
+    "checkOutDate": "2026-03-15",
+    "room": {
+      "roomId": 101
+    }
+  }
+  ```
+- **Response**: Returns the created booking object
+- **Example**:
+  ```cmd
+  curl -X POST http://localhost:9998/bookings/create -H "Content-Type: application/json" -d "{\"customerName\":\"John Doe\",\"customerPhone\":\"9876543210\",\"checkInDate\":\"2026-03-10\",\"checkOutDate\":\"2026-03-15\",\"room\":{\"roomId\":101}}"
+  ```
+
+#### 2. Get All Bookings
+- **Endpoint**: `GET /bookings/all`
+- **Description**: Retrieves all bookings in the system
+- **Response**: List of all booking objects
+- **Example**:
+  ```cmd
+  curl -X GET http://localhost:9998/bookings/all
+  ```
+
+#### 3. Get Booking by ID
+- **Endpoint**: `GET /bookings/{bookingid}`
+- **Description**: Retrieves a specific booking by its ID
+- **Path Variable**: `bookingid` (integer)
+- **Response**: Booking object
+- **Example**:
+  ```cmd
+  curl -X GET http://localhost:9998/bookings/1
+  ```
+
+#### 4. Update Booking
+- **Endpoint**: `PUT /bookings/update/{bookingid}`
+- **Description**: Updates an existing booking
+- **Path Variable**: `bookingid` (integer)
+- **Response**: Updated booking object
+- **Example**:
+  ```cmd
+  curl -X PUT http://localhost:9998/bookings/update/1
+  ```
+
+#### 5. Cancel Booking
+- **Endpoint**: `DELETE /bookings/cancel/{bookingid}`
+- **Description**: Cancels and deletes a booking
+- **Path Variable**: `bookingid` (integer)
+- **Response**: No content (void)
+- **Example**:
+  ```cmd
+  curl -X DELETE http://localhost:9998/bookings/cancel/1
+  ```
+
+---
+
+## Testing with Postman
+
+### Setting up Postman Collection
+
+1. **Create Room**
+   - Method: POST
+   - URL: `http://localhost:9998/rooms/add`
+   - Headers: `Content-Type: application/json`
+   - Body (raw JSON):
+     ```json
+     {
+       "roomId": 101,
+       "roomNumber": "R101",
+       "roomType": "Deluxe",
+       "price": 2500.00,
+       "status": "Available"
+     }
+     ```
+
+2. **Get All Rooms**
+   - Method: GET
+   - URL: `http://localhost:9998/rooms/all`
+
+3. **Create Booking**
+   - Method: POST
+   - URL: `http://localhost:9998/bookings/create`
+   - Headers: `Content-Type: application/json`
+   - Body (raw JSON):
+     ```json
+     {
+       "customerName": "John Doe",
+       "customerPhone": "9876543210",
+       "checkInDate": "2026-03-10",
+       "checkOutDate": "2026-03-15",
+       "room": {
+         "roomId": 101
+       }
+     }
+     ```
+
+4. **Get All Bookings**
+   - Method: GET
+   - URL: `http://localhost:9998/bookings/all`
+
+## Entity Relationships
+
+### Room Entity
+- **Table**: Room
+- **Primary Key**: roomId (int)
+- **Fields**:
+  - roomNumber (String)
+  - roomType (String)
+  - price (double)
+  - status (String)
+
+### Booking Entity
+- **Table**: Booking
+- **Primary Key**: bookingId (int, auto-generated)
+- **Fields**:
+  - customerName (String)
+  - customerPhone (String)
+  - checkInDate (Date)
+  - checkOutDate (Date)
+  - room (Many-to-One relationship with Room entity)
+
+## Common Issues and Solutions
+
+### Issue 1: MySQL Connection Error
+**Error**: `Communications link failure`
+**Solution**: 
+- Ensure MySQL server is running
+- Check username and password in application.properties
+- Verify the database exists: `CREATE DATABASE IF NOT EXISTS mycapgdb;`
+
+### Issue 2: Port Already in Use
+**Error**: `Port 9998 is already in use`
+**Solution**: 
+- Change the port in application.properties: `server.port=8080`
+- Or stop the process using port 9998
+
+### Issue 3: Table Not Found
+**Solution**: 
+- The application uses `spring.jpa.hibernate.ddl-auto=update` which automatically creates tables
+- Ensure database permissions are set correctly
+
+## Development Notes
+
+- The project uses **EntityManager** for database operations instead of default JpaRepository methods
+- Services are annotated with `@Service` and use `@Transactional` for transaction management
+- All REST endpoints return JSON responses
+- The application uses Jakarta Persistence API (JPA) for entity mappings
+
+## Future Enhancements
+- Add input validation for request bodies
+- Implement exception handling with @ControllerAdvice
+- Add pagination for GET all endpoints
+- Implement room availability checking before booking
+- Add custom query methods for searching rooms by type or status
+- Add authentication and authorization
+- Implement logging with SLF4J
+
+## Contributors
+- Capgemini Training Team
+
+## License
+This is a training project for educational purposes.
