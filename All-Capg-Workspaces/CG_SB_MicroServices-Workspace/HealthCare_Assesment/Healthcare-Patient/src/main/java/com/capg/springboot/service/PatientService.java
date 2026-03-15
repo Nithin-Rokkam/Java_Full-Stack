@@ -35,6 +35,7 @@ public class PatientService {
             existing.setAge(patient.getAge());
             existing.setGender(patient.getGender());
             existing.setPhone(patient.getPhone());
+            existing.setDisease(patient.getDisease());
 
             return dao.save(existing);
         }
